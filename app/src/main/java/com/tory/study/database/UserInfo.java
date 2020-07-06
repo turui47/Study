@@ -6,11 +6,8 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
-@Entity(tableName = "FriendInfo", primaryKeys = {"owner_id", "user_id"})
-public class UserInfo {
-    @ColumnInfo(name = "owner_id")
-    @NotNull
-    private String ownerId;
+@Entity(tableName = "FriendInfo", primaryKeys = {"user_id"})
+public class UserInfo extends UserBaseInfo {
     @ColumnInfo(name = "user_id")
     @NotNull
     private String userId;
@@ -23,22 +20,12 @@ public class UserInfo {
     @ColumnInfo(name = "user_address")
     private String userAddress;
 
-    public UserInfo(@NotNull String ownerId, @NotNull String userId, String userGender, String userAvatar, String userPhone, String userAddress) {
-        this.ownerId = ownerId;
+    public UserInfo(@NotNull String userId, String userGender, String userAvatar, String userPhone, String userAddress) {
         this.userId = userId;
         this.userGender = userGender;
         this.userAvatar = userAvatar;
         this.userPhone = userPhone;
         this.userAddress = userAddress;
-    }
-
-    @NotNull
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(@NotNull String ownerId) {
-        this.ownerId = ownerId;
     }
 
     @NotNull

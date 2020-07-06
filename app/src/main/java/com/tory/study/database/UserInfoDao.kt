@@ -9,8 +9,8 @@ import io.reactivex.Single
 interface UserInfoDao {
     @Query("SELECT * FROM FriendInfo")
     fun getAll(): Maybe<List<UserInfo>>
-    @Query("SELECT * FROM FriendInfo WHERE owner_id = :owner")
-    fun getAllByOwner(owner: String): List<UserInfo>
+//    @Query("SELECT * FROM FriendInfo WHERE owner_id = :owner")
+//    fun getAllByOwner(owner: String): List<UserInfo>
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(userInfo: UserInfo): Long
     @Update

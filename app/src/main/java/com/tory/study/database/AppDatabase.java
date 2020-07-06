@@ -13,6 +13,8 @@ import io.reactivex.Single;
 @Database(entities = {UserInfo.class},version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
+    public static final String DB_NAME = "Tory";
+
     private static AppDatabase INSTANCE;
 
     public abstract UserInfoDao userInfoDao();
@@ -20,10 +22,10 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "testDatabase")
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DB_NAME + ".db")
                             // allow queries on the main thread.
                             // Don't do this on a real app! See PersistenceBasicSample for an example.
-                            .allowMainThreadQueries()
+                            //.allowMainThreadQueries()
                             .fallbackToDestructiveMigration()
                             .build();
         }
